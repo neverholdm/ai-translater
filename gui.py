@@ -1,17 +1,40 @@
 import tkinter as tk
 from translate import translate
+from  tkinter import ttk
 
 window = tk.Tk()
 
 window.title("AI 翻译器")
 window.geometry("600x500")
+# 源语言
+source_label = tk.Label(window, text="源语言：")
+source_label.pack()
 
+source_language = ttk.Combobox(
+    window,
+    values=["中文", "英语", "日语", "韩语"],
+    state="readonly"
+)
+source_language.set("中文")
+source_language.pack()
+# 输入内容
 source_label = tk.Label(window,text="请输入翻译内容")
 source_label.pack()
 
 source_text = tk.Text(window, height=8, width=60)
 source_text.pack()
+# 目标语言
+target_label = tk.Label(window, text="目标语言：")
+target_label.pack()
 
+target_language = ttk.Combobox(
+    window,
+    values=["中文", "英语", "日语", "韩语"],
+    state="readonly"
+)
+target_language.set("英语")
+target_language.pack()
+# 翻译结果
 result_label = tk.Label(window, text="翻译结果：")
 result_label.pack()
 
@@ -24,8 +47,8 @@ def do_translate():
 
     result = translate(
         text,
-        "中文",
-        "英语"
+        source_language.get(),
+        target_language.get()
     )
 
     result_text.delete("1.0", "end")
