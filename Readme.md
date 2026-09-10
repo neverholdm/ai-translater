@@ -221,14 +221,9 @@ python-dotenv
 
 # 📷 项目展示
 
-（此处添加 GUI 截图）
+## GUI 界面
 
-例如：
-
-```
-assets/
-└── gui.png
-```
+![AI Translator GUI](assets/gui.png)
 
 ---
 
