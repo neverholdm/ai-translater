@@ -10,6 +10,7 @@ window.geometry("600x500")
 source_label = tk.Label(window, text="源语言：")
 source_label.pack()
 
+
 source_language = ttk.Combobox(
     window,
     values=["中文", "英语", "日语", "韩语"],
