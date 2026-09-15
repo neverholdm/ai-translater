@@ -1,5 +1,5 @@
 import tkinter as tk
-from translate import translate
+from translate import TranslationError, translate
 from  tkinter import ttk
 
 window = tk.Tk()
@@ -46,15 +46,17 @@ result_text.pack()
 def do_translate():
     text = source_text.get("1.0", "end-1c")
 
-    result = translate(
-        text,
-        source_language.get(),
-        target_language.get()
-    )
+    try:
+        result = translate(
+            text,
+            source_language.get(),
+            target_language.get(),
+        )
+    except TranslationError as exc:
+        result = f"翻译失败：{exc}"
 
     result_text.delete("1.0", "end")
     result_text.insert("1.0", result)
-    
 
 # 翻译按钮
 translate_button = tk.Button(

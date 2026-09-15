@@ -1,4 +1,4 @@
-from translate import translate
+from translate import TranslationError, translate
 from translate_history import show_translate_history,save_translate_history
 
 def once_translate ():
@@ -9,14 +9,23 @@ def once_translate ():
         if text :
             break
         print("内容不能为空")
-    result=translate(text,source_language,target_language)
+    try:
+        result = translate(
+            text,
+            source_language,
+            target_language,
+        )
+    except TranslationError as exc:
+        print(f"翻译失败：{exc}")
+        return
+
     print(f"翻译结果:\n{result}")
 
     save_translate_history(
         source_language,
         target_language,
         text,
-        result
+        result,
 )
 
 def main () :

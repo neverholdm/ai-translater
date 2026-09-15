@@ -10,3 +10,7 @@ __pycache__/
 
 # Translation history
 translation_history.txt
+
+# Local editor and project instructions
+.vscode/
+AGENTS.md
